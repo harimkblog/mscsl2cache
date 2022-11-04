@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/mscsl2cache.iml" filepath="$PROJECT_DIR$/.idea/mscsl2cache.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ORMLevel2CacheStudy/orml2cache.iml" filepath="$PROJECT_DIR$/ORMLevel2CacheStudy/orml2cache.iml" />
+    </modules>
+  </component>
+</project>
