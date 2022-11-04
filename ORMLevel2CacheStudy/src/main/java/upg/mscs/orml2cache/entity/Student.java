@@ -20,4 +20,22 @@ public class Student {
     private Department department;
     @ManyToMany()
     private Set<Course> courses;
+
+    @Override
+    public String toString() {
+        return String.join( "~", ""+ id, name, ""+address.getId(), ""+department.getId());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if(! (o instanceof Student))
+            return false;
+        return this.id == ((Student)o).id;
+    }
+
+    @Override
+    public int hashCode() {
+        return this.id;
+    }
+
 }

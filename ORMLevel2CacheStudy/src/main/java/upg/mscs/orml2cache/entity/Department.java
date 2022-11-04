@@ -17,4 +17,21 @@ public class Department {
     private List<Student> students;
 
     private String name;
+
+    @Override
+    public String toString() {
+        return String.join( "~", ""+ id, name);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if(! (o instanceof Department))
+            return false;
+        return this.id == ((Department)o).id;
+    }
+
+    @Override
+    public int hashCode() {
+        return this.id;
+    }
 }
