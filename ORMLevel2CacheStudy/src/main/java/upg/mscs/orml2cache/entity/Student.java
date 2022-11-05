@@ -26,6 +26,10 @@ public class Student {
         return String.join( "~", ""+ id, name, ""+address.getId(), ""+department.getId());
     }
 
+    public String studentCourseMap() {
+        return String.join( "~", ""+ id,  ""+courses.stream().findFirst().get().getId());
+    }
+
     @Override
     public boolean equals(Object o) {
         if(! (o instanceof Student))
