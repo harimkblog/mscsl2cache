@@ -6,14 +6,14 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name="address", schema="olc2")
+@Table(name="course", schema="olc2")
 @Data
 public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO )
     private int id;
 
-    @ManyToMany()
+    @ManyToMany(mappedBy = "courses")
     private Set<Student> students;
 
     private String name;

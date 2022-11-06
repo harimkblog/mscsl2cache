@@ -13,8 +13,6 @@ public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO )
     private int id;
-    @OneToOne
-    private Student student;
 
     private String streetAddress;
     private String city;
@@ -23,7 +21,7 @@ public class Address {
 
     @Override
     public String toString() {
-        return String.join("~", ""+id, ""+student.getId(), streetAddress, city, state, country );
+        return String.join("~", ""+id, streetAddress, city, state, country );
     }
 
     @Override

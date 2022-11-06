@@ -3,14 +3,22 @@ package upg.mscs.orml2cache.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import upg.mscs.orml2cache.entity.Student;
-import upg.mscs.orml2cache.repository.EmployeeRepository;
+
+import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 
 @Service
 public class EmployeeService {
+    //@Autowired
+    //private EmployeeRepository empRepo;
     @Autowired
-    private EmployeeRepository empRepo;
+    private EntityManager em;
 
-    public Student saveEmployee(Student emp) {
-        return empRepo.save(emp);
+    @Transactional
+    public Student saveEmployee(Student student) {
+        em.merge(student);
+        //em.persist(student);
+        em.flush();
+        return em.find(Student.class, student.getId());
     }
 }

@@ -18,9 +18,6 @@ public class AddressGen {
                 if (i % 2 == 0) a.setState("NJ");
                 else a.setState("NY");
                 a.setCountry("USA");
-                Student s = new Student();
-                s.setId(i);
-                a.setStudent(s);
                 out.write(a.toString().getBytes());
                 out.write("\n".getBytes());
             }
