@@ -1,6 +1,7 @@
 package upg.mscs.orml2cache.entity;
 
 import lombok.Data;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.util.StringUtils;
 
 import javax.persistence.*;
@@ -8,6 +9,8 @@ import java.util.StringJoiner;
 
 @Entity
 @Table(name="address", schema="olc2")
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Data
 public class Address {
     @Id

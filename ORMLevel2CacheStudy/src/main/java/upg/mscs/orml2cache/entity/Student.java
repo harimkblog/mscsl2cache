@@ -1,12 +1,15 @@
 package upg.mscs.orml2cache.entity;
 
 import lombok.Data;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
 @Table(name="student", schema="olc2")
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Data
 public class Student {
     @Id
@@ -41,5 +44,4 @@ public class Student {
     public int hashCode() {
         return this.id;
     }
-
 }

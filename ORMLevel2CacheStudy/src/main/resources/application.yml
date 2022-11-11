@@ -11,6 +11,11 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+        cache:
+          use_second_level_cache: true
+          region:
+            factory_class: com.hazelcast.hibernate.HazelcastCacheRegionFactory
+
 management:
   endpoints:
     web:

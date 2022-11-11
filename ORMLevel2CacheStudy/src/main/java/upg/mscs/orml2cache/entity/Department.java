@@ -1,12 +1,15 @@
 package upg.mscs.orml2cache.entity;
 
 import lombok.Data;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Table(name="department", schema="olc2")
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Data
 public class Department {
     @Id
