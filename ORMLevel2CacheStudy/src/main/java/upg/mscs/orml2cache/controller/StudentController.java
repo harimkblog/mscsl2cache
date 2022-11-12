@@ -10,6 +10,7 @@ import java.util.Map;
 
 @RestController
 public class StudentController {
+    //com.hazelcast.hibernate.HazelcastCacheRegionFactory
     @Autowired
     StudentService service;
 
@@ -28,4 +29,5 @@ public class StudentController {
         m.put("student", s);
         return m;
     }
+
 }
