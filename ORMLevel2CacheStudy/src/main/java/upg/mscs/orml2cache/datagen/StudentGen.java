@@ -11,10 +11,15 @@ import java.util.HashSet;
 
 public class StudentGen {
     public static void main(String[] args) throws Exception {
-        String file = "C:\\Users\\Harim\\OneDrive\\Documents\\personal\\work\\mscsl2cache\\files\\student.dat";
-        String file2 = "C:\\Users\\Harim\\OneDrive\\Documents\\personal\\work\\mscsl2cache\\files\\student-course.dat";
+        String file = "C:\\Users\\Harim\\OneDrive\\Documents\\personal\\work\\mscsl2cache\\files\\student.csv";
+        String file2 = "C:\\Users\\Harim\\OneDrive\\Documents\\personal\\work\\mscsl2cache\\files\\student-course.csv";
         try (BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(file))) {
             try(BufferedOutputStream out2 = new BufferedOutputStream(new FileOutputStream(file2))) {
+                out.write(String.join(",", "id", "name", "address_id", "department_id").getBytes());
+                out.write("\n".getBytes());
+                out2.write(String.join(",", "students_id", "courses_id").getBytes());
+                out2.write("\n".getBytes());
+
                 int deptId = -1, courseId = -1;
                 int mod = 10;
                 for (int i = 0; i < 100000; ++i) {

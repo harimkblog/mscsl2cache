@@ -13,7 +13,7 @@ import java.util.Set;
 @Data
 public class Student {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO )
+    @GeneratedValue(strategy = GenerationType.TABLE )
     private int id;
     private String name;
 
@@ -26,11 +26,11 @@ public class Student {
 
     @Override
     public String toString() {
-        return String.join( "~", ""+ id, name, ""+address.getId(), ""+department.getId());
+        return String.join( ",", ""+ id, name, ""+address.getId(), ""+department.getId());
     }
 
     public String studentCourseMap() {
-        return String.join( "~", ""+ id,  ""+courses.stream().findFirst().get().getId());
+        return String.join( ",", ""+ id,  ""+courses.stream().findFirst().get().getId());
     }
 
     @Override

@@ -14,7 +14,7 @@ import java.util.StringJoiner;
 @Data
 public class Address {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO )
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private int id;
 
     private String streetAddress;
@@ -24,7 +24,7 @@ public class Address {
 
     @Override
     public String toString() {
-        return String.join("~", ""+id, streetAddress, city, state, country );
+        return String.join(",", ""+id, streetAddress, city, state, country );
     }
 
     @Override

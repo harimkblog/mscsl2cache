@@ -8,8 +8,10 @@ import java.io.FileOutputStream;
 
 public class AddressGen {
     public static void main(String[] args) throws Exception {
-        String file = "C:\\Users\\Harim\\OneDrive\\Documents\\personal\\work\\mscsl2cache\\files\\address.dat";
+        String file = "C:\\Users\\Harim\\OneDrive\\Documents\\personal\\work\\mscsl2cache\\files\\address.csv";
         try (BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(file))) {
+            out.write(String.join(",", "id", "street_address", "city", "state", "country").getBytes());
+            out.write("\n".getBytes());
             for (int i = 0; i < 100000; ++i) {
                 Address a = new Address();
                 a.setId(i);

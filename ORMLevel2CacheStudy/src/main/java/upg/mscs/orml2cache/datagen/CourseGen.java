@@ -7,8 +7,10 @@ import java.io.FileOutputStream;
 
 public class CourseGen {
     public static void main(String[] args) throws Exception {
-        String file = "C:\\Users\\Harim\\OneDrive\\Documents\\personal\\work\\mscsl2cache\\files\\course.dat";
+        String file = "C:\\Users\\Harim\\OneDrive\\Documents\\personal\\work\\mscsl2cache\\files\\course.csv";
         try (BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(file))) {
+            out.write(String.join(",", "id", "name").getBytes());
+            out.write("\n".getBytes());
             for(int i =0; i<1000;++i) {
                 Course c = new Course();
                 c.setId(i);

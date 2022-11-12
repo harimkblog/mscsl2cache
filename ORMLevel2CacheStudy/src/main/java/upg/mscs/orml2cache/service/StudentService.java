@@ -21,7 +21,6 @@ public class StudentService {
     }
 
     public Student getById(Integer i) {
-        Student s = em.find(Student.class, i);
-        return s;
+        return em.find(Student.class, i);
     }
 }

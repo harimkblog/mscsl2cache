@@ -8,8 +8,10 @@ import java.io.FileOutputStream;
 public class DeptGen {
 
     public static void main(String[] args) throws Exception {
-        String file = "C:\\Users\\Harim\\OneDrive\\Documents\\personal\\work\\mscsl2cache\\files\\dept.dat";
+        String file = "C:\\Users\\Harim\\OneDrive\\Documents\\personal\\work\\mscsl2cache\\files\\dept.csv";
         try (BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(file))) {
+            out.write(String.join(",", "id", "name").getBytes());
+            out.write("\n".getBytes());
             for(int i =0; i<1000;++i) {
                 Department d = new Department();
                 d.setId(i);

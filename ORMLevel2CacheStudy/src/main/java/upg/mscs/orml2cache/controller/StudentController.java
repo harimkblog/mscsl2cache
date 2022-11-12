@@ -5,6 +5,9 @@ import org.springframework.web.bind.annotation.*;
 import upg.mscs.orml2cache.entity.Student;
 import upg.mscs.orml2cache.service.StudentService;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 public class StudentController {
     @Autowired
@@ -16,8 +19,13 @@ public class StudentController {
     }
 
     @GetMapping("/student")
-    public Student getById(@RequestParam Integer i) {
-        return service.getById(i);
+    public Map<String, Object> getById(@RequestParam Integer i) {
+        long time1 = System.currentTimeMillis();
+        Student s =  service.getById(i);
+        long time2 = System.currentTimeMillis();
+        Map<String, Object> m = new HashMap<>();
+        m.put("timeTaken", (Long) time2-time1);
+        m.put("student", s);
+        return m;
     }
-
 }

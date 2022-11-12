@@ -13,7 +13,7 @@ import java.util.List;
 @Data
 public class Department {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO )
+    @GeneratedValue(strategy = GenerationType.TABLE )
     private int id;
 
     @OneToMany(mappedBy = "department")
@@ -23,7 +23,7 @@ public class Department {
 
     @Override
     public String toString() {
-        return String.join( "~", ""+ id, name);
+        return String.join( ",", ""+ id, name);
     }
 
     @Override
