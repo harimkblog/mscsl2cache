@@ -1,5 +1,7 @@
 package upg.mscs.orml2cache.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -16,6 +18,7 @@ public class Department {
     @GeneratedValue(strategy = GenerationType.TABLE )
     private int id;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "department")
     private List<Student> students;
 

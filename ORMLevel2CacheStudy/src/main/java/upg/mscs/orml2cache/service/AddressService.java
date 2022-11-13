@@ -6,18 +6,25 @@ import upg.mscs.orml2cache.entity.Address;
 import upg.mscs.orml2cache.entity.Student;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Service
 public class AddressService {
-    @Autowired
+    @PersistenceContext
     private EntityManager em;
 
-    public int load10K() {
+    public int load(Integer limit) {
         TypedQuery<Address> typedQuery
-                = em.createQuery("SELECT a FROM Address a WHERE a.id<10000", Address.class);
+                = em.createQuery("SELECT a FROM Address a WHERE a.id < :id", Address.class);
+        typedQuery.setParameter("id", limit);
         List<Address> l = typedQuery.getResultList();
         return l.size();
     }
+
+    public Address loadId(Integer id) {
+        return em.find(Address.class, id );
+    }
+
 }

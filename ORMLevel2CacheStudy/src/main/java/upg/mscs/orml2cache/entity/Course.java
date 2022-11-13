@@ -4,6 +4,7 @@ import lombok.Data;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -16,8 +17,8 @@ public class Course {
     @GeneratedValue(strategy = GenerationType.TABLE )
     private int id;
 
-    @ManyToMany(mappedBy = "courses")
-    private Set<Student> students;
+    //@ManyToMany(fetch = FetchType.LAZY, mappedBy = "courses")
+    //private Set<Student> students = new HashSet<>();
 
     private String name;
 

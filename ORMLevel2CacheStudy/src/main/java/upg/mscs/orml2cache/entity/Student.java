@@ -1,14 +1,18 @@
 package upg.mscs.orml2cache.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name="student", schema="olc2")
-@Cacheable
+@Cacheable()
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Data
 public class Student {
@@ -19,10 +23,15 @@ public class Student {
 
     @OneToOne
     private Address address;
+
     @ManyToOne
+    @JsonManagedReference
     private Department department;
-    @ManyToMany()
-    private Set<Course> courses;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "student_courses", joinColumns = @JoinColumn(name = "students_id"), inverseJoinColumns = @JoinColumn(name = "courses_id"))
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    private Set<Course> courses = new HashSet<>();
 
     @Override
     public String toString() {
