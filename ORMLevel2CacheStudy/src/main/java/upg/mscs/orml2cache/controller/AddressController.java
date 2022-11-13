@@ -18,9 +18,9 @@ public class AddressController {
     AddressService as;
 
     @GetMapping("/address/load")
-    public Map<String, Object> load(@RequestParam int limit ) {
+    public Map<String, Object> load(@RequestParam int from, @RequestParam int to, @RequestParam boolean cacheQuery ) {
         long time1 = System.currentTimeMillis();
-        int s =  as.load(limit);
+        int s =  as.load(from, to, cacheQuery);
         long time2 = System.currentTimeMillis();
         Map<String, Object> m = new HashMap<>();
         m.put("timeTaken", (Long) time2-time1);

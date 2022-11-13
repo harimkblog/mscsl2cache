@@ -13,10 +13,12 @@ public class AddressService {
     @PersistenceContext
     private EntityManager em;
 
-    public int load(Integer limit) {
+    public int load(Integer from, Integer to, boolean cacheQuery) {
         TypedQuery<Address> typedQuery
-                = em.createQuery("SELECT a FROM Address a WHERE a.id < :id", Address.class);
-        typedQuery.setParameter("id", limit);
+                = em.createQuery("SELECT a FROM Address a WHERE a.id between :from and :to", Address.class);
+        typedQuery.setParameter("from", from);
+        typedQuery.setParameter("to", to);
+        typedQuery.setHint("org.hibernate.cacheable", cacheQuery);
         List<Address> l = typedQuery.getResultList();
         return l.size();
     }

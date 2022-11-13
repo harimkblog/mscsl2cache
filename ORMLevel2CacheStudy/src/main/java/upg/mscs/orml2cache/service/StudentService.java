@@ -22,11 +22,13 @@ public class StudentService {
         return em.find(Student.class, student.getId());
     }
 
-    public int load(Integer limit) {
+    public int load(Integer from, Integer to, boolean cacheable) {
         TypedQuery<Student> typedQuery =
-                em.createQuery("SELECT DISTINCT s FROM Student s  JOIN FETCH s.address JOIN FETCH s.department JOIN FETCH s.courses WHERE s.id < :id", Student.class);
-                // em.createQuery("SELECT s FROM Student s JOIN FETCH s.department JOIN FETCH s.address JOINT FETCH s.courses WHERE s.id < :id", Student.class);
-        typedQuery.setParameter("id", limit);
+                em.createQuery("SELECT DISTINCT s FROM Student s  " +
+                        "JOIN FETCH s.address JOIN FETCH s.department JOIN FETCH s.courses WHERE s.id between :from and :to ", Student.class);
+        typedQuery.setParameter("from", from);
+        typedQuery.setParameter("to", to);
+        typedQuery.setHint("org.hibernate.cacheable", cacheable);
         List<Student> l = typedQuery.getResultList();
         return l.size();
     }
@@ -34,6 +36,5 @@ public class StudentService {
     public Student loadId(Integer i) {
         return em.find(Student.class, i);
     }
-
 
 }
