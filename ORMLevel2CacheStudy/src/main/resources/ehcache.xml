@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ehcache>
     <defaultCache eternal="true"
-        maxEntriesLocalHeap="1" memoryStoreEvictionPolicy="LRU" > </defaultCache>
+        maxEntriesLocalHeap="25000" memoryStoreEvictionPolicy="LRU" > </defaultCache>
     <cache name="upg.mscs.orml2cache.entity.Student"
-           maxEntriesLocalHeap="1" eternal="true" statistics = "true" memoryStoreEvictionPolicy="LRU" ></cache>
+           maxEntriesLocalHeap="25000" eternal="true" statistics = "true" memoryStoreEvictionPolicy="LRU" ></cache>
     <cache name="upg.mscs.orml2cache.entity.Address"
-           maxEntriesLocalHeap="1" eternal="true" statistics = "true" memoryStoreEvictionPolicy="LRU"></cache>
+           maxEntriesLocalHeap="25000" eternal="true" statistics = "true" memoryStoreEvictionPolicy="LRU"></cache>
 </ehcache>

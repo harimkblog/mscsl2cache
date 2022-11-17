@@ -2,10 +2,8 @@ package upg.mscs.orml2cache.entity;
 
 import lombok.Data;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.springframework.util.StringUtils;
 
 import javax.persistence.*;
-import java.util.StringJoiner;
 
 @Entity
 @Table(name="address", schema="olc2")
