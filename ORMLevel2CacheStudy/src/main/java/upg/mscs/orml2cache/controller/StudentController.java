@@ -11,7 +11,7 @@ import java.util.Map;
 
 @RestController
 public class StudentController {
-    //org.hibernate.cache.ehcache.EhCacheRegionFactory
+    //com.hazelcast.hibernate.HazelcastCacheRegionFactory org.hibernate.cache.ehcache.EhCacheRegionFactory
     @Autowired
     StudentService service;
 
