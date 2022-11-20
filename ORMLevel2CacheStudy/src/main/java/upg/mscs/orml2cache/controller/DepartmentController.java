@@ -4,22 +4,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import upg.mscs.orml2cache.entity.Address;
-import upg.mscs.orml2cache.service.AddressService;
+import upg.mscs.orml2cache.entity.Department;
+import upg.mscs.orml2cache.service.DepartmentService;
 
 import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-public class AddressController {
+public class DepartmentController {
 
     @Autowired
-    AddressService as;
+    DepartmentService ds;
 
-    @GetMapping("/address/load")
+    @GetMapping("/department/load")
     public Map<String, Object> loadMany(@RequestParam int from, @RequestParam int to, @RequestParam boolean cacheQuery ) {
         long time1 = System.currentTimeMillis();
-        int s =  as.loadMany(from, to, cacheQuery);
+        int s =  ds.loadMany(from, to, cacheQuery);
         long time2 = System.currentTimeMillis();
         Map<String, Object> m = new HashMap<>();
         m.put("timeTaken", time2-time1);
@@ -27,14 +27,14 @@ public class AddressController {
         return m;
     }
 
-    @GetMapping("/address")
+    @GetMapping("/department")
     public Map<String, Object> loadId(int id) {
         long time1 = System.currentTimeMillis();
-        Address a = as.loadId(id);
+        Department d = ds.loadId(id);
         long time2 = System.currentTimeMillis();
         Map<String, Object> m = new HashMap<>();
         m.put("timeTaken", time2-time1);
-        m.put("address", a);
+        m.put("department", d);
         return m;
     }
 

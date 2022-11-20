@@ -4,22 +4,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import upg.mscs.orml2cache.entity.Address;
-import upg.mscs.orml2cache.service.AddressService;
+import upg.mscs.orml2cache.entity.Course;
+import upg.mscs.orml2cache.service.CourseService;
 
 import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-public class AddressController {
+public class CourseController {
 
     @Autowired
-    AddressService as;
+    CourseService cs;
 
-    @GetMapping("/address/load")
+    @GetMapping("/course/load")
     public Map<String, Object> loadMany(@RequestParam int from, @RequestParam int to, @RequestParam boolean cacheQuery ) {
         long time1 = System.currentTimeMillis();
-        int s =  as.loadMany(from, to, cacheQuery);
+        int s =  cs.loadMany(from, to, cacheQuery);
         long time2 = System.currentTimeMillis();
         Map<String, Object> m = new HashMap<>();
         m.put("timeTaken", time2-time1);
@@ -27,14 +27,14 @@ public class AddressController {
         return m;
     }
 
-    @GetMapping("/address")
+    @GetMapping("/course")
     public Map<String, Object> loadId(int id) {
         long time1 = System.currentTimeMillis();
-        Address a = as.loadId(id);
+        Course c = cs.loadId(id);
         long time2 = System.currentTimeMillis();
         Map<String, Object> m = new HashMap<>();
         m.put("timeTaken", time2-time1);
-        m.put("address", a);
+        m.put("course", c);
         return m;
     }
 

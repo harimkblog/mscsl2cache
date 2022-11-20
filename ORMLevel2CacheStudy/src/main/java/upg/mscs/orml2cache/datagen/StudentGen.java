@@ -29,6 +29,9 @@ public class StudentGen {
                     Address a = new Address();
                     a.setId(i);
                     s.setAddress(a);
+                    // increase the number of students in a course by
+                    // increasing the mod value
+                    // department id is changed only after  remainder is zero
                     if (i % mod == 0) {
                         ++deptId; ++courseId; mod += 2;
                     }

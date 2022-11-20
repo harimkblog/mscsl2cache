@@ -22,7 +22,8 @@ public class StudentService {
         return em.find(Student.class, student.getId());
     }
 
-    public int load(Integer from, Integer to, boolean cacheable) {
+    @Transactional
+    public int loadMany(Integer from, Integer to, boolean cacheable) {
         TypedQuery<Student> typedQuery =
                 em.createQuery("SELECT DISTINCT s FROM Student s  " +
                         "JOIN FETCH s.address JOIN FETCH s.department JOIN FETCH s.courses WHERE s.id between :from and :to ", Student.class);
@@ -33,6 +34,7 @@ public class StudentService {
         return l.size();
     }
 
+    @Transactional
     public Student loadId(Integer i) {
         return em.find(Student.class, i);
     }

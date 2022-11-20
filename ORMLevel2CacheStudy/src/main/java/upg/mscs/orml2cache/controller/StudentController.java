@@ -2,7 +2,6 @@ package upg.mscs.orml2cache.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import upg.mscs.orml2cache.entity.Address;
 import upg.mscs.orml2cache.entity.Student;
 import upg.mscs.orml2cache.service.StudentService;
 
@@ -32,9 +31,9 @@ public class StudentController {
     }
 
     @GetMapping("/student/load")
-    public Map<String, Object> load(@RequestParam int from, @RequestParam int to, @RequestParam boolean cacheQuery ) {
+    public Map<String, Object> loadMany(@RequestParam int from, @RequestParam int to, @RequestParam boolean cacheQuery ) {
         long time1 = System.currentTimeMillis();
-        int s =  service.load(from, to, cacheQuery);
+        int s =  service.loadMany(from, to, cacheQuery);
         long time2 = System.currentTimeMillis();
         Map<String, Object> m = new HashMap<>();
         m.put("timeTaken", time2-time1);
