@@ -40,4 +40,16 @@ public class StudentController {
         m.put("size", s);
         return m;
     }
+
+    @PostMapping("/student/update")
+    public Map<String, Object> updateStudent(int id) {
+        long time1 = System.currentTimeMillis();
+        int ret = service.updateStudent(id);
+        long time2 = System.currentTimeMillis();
+        Map<String, Object> m = new HashMap<>();
+        m.put("timeTaken", time2-time1);
+        m.put("ret", ret);
+        return m;
+    }
+
 }

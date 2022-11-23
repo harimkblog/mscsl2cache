@@ -2,6 +2,7 @@ package upg.mscs.orml2cache.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import upg.mscs.orml2cache.entity.Address;
@@ -35,6 +36,17 @@ public class AddressController {
         Map<String, Object> m = new HashMap<>();
         m.put("timeTaken", time2-time1);
         m.put("address", a);
+        return m;
+    }
+
+    @PostMapping("/address/update")
+    public Map<String, Object> updateAddress(int id) {
+        long time1 = System.currentTimeMillis();
+        int ret = as.updateAddress(id);
+        long time2 = System.currentTimeMillis();
+        Map<String, Object> m = new HashMap<>();
+        m.put("timeTaken", time2-time1);
+        m.put("ret", ret);
         return m;
     }
 

@@ -5,6 +5,7 @@ import upg.mscs.orml2cache.entity.Address;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 import java.util.List;
@@ -30,4 +31,11 @@ public class AddressService {
         return em.find(Address.class, id );
     }
 
+    @Transactional
+    public int updateAddress(Integer id) {
+        Query query = em.createQuery("UPDATE Address a SET a.city = a.city WHERE a.id = :id");
+        query.setParameter("id", id);
+
+        return query.executeUpdate();
+    }
 }

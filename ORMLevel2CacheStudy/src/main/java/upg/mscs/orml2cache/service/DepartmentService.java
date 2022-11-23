@@ -5,6 +5,7 @@ import upg.mscs.orml2cache.entity.Department;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 import java.util.List;
@@ -30,4 +31,11 @@ public class DepartmentService {
         return em.find(Department.class, id );
     }
 
+    @Transactional
+    public int updateDepartment(Integer id) {
+        Query query = em.createQuery("UPDATE Department a SET a.name = a.name WHERE a.id = :id");
+        query.setParameter("id", id);
+
+        return query.executeUpdate();
+    }
 }
