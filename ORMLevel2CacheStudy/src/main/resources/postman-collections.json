@@ -2,6 +2,82 @@
 	"version": 1,
 	"collections": [
 		{
+			"id": "492c15af-c5e9-4bb5-b30e-e45c98baede8",
+			"uid": "0-492c15af-c5e9-4bb5-b30e-e45c98baede8",
+			"name": "evictAddressTest",
+			"description": null,
+			"auth": null,
+			"events": null,
+			"variables": [],
+			"order": [
+				"dadd559b-f1da-4f6b-a394-2ed1353ebdb1"
+			],
+			"folders_order": [],
+			"protocolProfileBehavior": {},
+			"createdAt": "2022-11-22T15:02:16.560Z",
+			"folders": [],
+			"requests": [
+				{
+					"id": "dadd559b-f1da-4f6b-a394-2ed1353ebdb1",
+					"uid": "0-dadd559b-f1da-4f6b-a394-2ed1353ebdb1",
+					"name": "evict1000Address",
+					"url": "{{hostname}}:8080/address/load?from={{from}}&to={{to}}&cacheQuery=false",
+					"description": null,
+					"data": null,
+					"dataOptions": null,
+					"dataMode": null,
+					"headerData": null,
+					"method": "GET",
+					"pathVariableData": [],
+					"queryParams": [
+						{
+							"key": "from",
+							"value": "{{from}}",
+							"equals": true,
+							"description": "",
+							"enabled": true
+						},
+						{
+							"key": "to",
+							"value": "{{to}}",
+							"equals": true,
+							"description": "",
+							"enabled": true
+						},
+						{
+							"key": "cacheQuery",
+							"value": "false",
+							"equals": true,
+							"description": "",
+							"enabled": true
+						}
+					],
+					"auth": null,
+					"events": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "d4a6e9bf-d14f-4eac-b844-583676a28c8a",
+								"exec": [
+									"postman.setGlobalVariable(\"from\", Number(postman.getGlobalVariable(\"from\"))+1000);\r",
+									"postman.setGlobalVariable(\"to\", Number(postman.getGlobalVariable(\"to\"))+1000);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"folder": null,
+					"responses_order": [],
+					"preRequestScript": "postman.setGlobalVariable(\"from\", Number(postman.getGlobalVariable(\"from\"))+1000);\r\npostman.setGlobalVariable(\"to\", Number(postman.getGlobalVariable(\"to\"))+1000);",
+					"tests": null,
+					"currentHelper": null,
+					"helperAttributes": null,
+					"collectionId": "492c15af-c5e9-4bb5-b30e-e45c98baede8",
+					"pathVariables": {}
+				}
+			]
+		},
+		{
 			"id": "4cd6eb32-5167-4b9e-bd66-331492d6e532",
 			"uid": "0-4cd6eb32-5167-4b9e-bd66-331492d6e532",
 			"name": "load10KStudentCacheable",
@@ -59,6 +135,54 @@
 					"currentHelper": null,
 					"helperAttributes": null,
 					"collectionId": "4cd6eb32-5167-4b9e-bd66-331492d6e532",
+					"pathVariables": {}
+				}
+			]
+		},
+		{
+			"id": "4ffbae96-1309-4a37-b969-8f0e0f3238a7",
+			"uid": "0-4ffbae96-1309-4a37-b969-8f0e0f3238a7",
+			"name": "cacheInvalidation",
+			"description": null,
+			"auth": null,
+			"events": null,
+			"variables": [],
+			"order": [
+				"abd41cd8-988a-4b0d-b54a-a0391d132f9c"
+			],
+			"folders_order": [],
+			"protocolProfileBehavior": {},
+			"createdAt": "2022-11-23T20:54:42.106Z",
+			"folders": [],
+			"requests": [
+				{
+					"id": "abd41cd8-988a-4b0d-b54a-a0391d132f9c",
+					"uid": "0-abd41cd8-988a-4b0d-b54a-a0391d132f9c",
+					"name": "cacheInvalidation",
+					"url": "{{hostname}}:8080/address/update?id={{sid}}",
+					"description": null,
+					"data": null,
+					"dataOptions": null,
+					"dataMode": null,
+					"headerData": null,
+					"method": "POST",
+					"pathVariableData": [],
+					"queryParams": [
+						{
+							"key": "id",
+							"value": "{{sid}}",
+							"equals": true,
+							"description": null,
+							"enabled": true
+						}
+					],
+					"auth": null,
+					"events": null,
+					"folder": null,
+					"responses_order": [],
+					"currentHelper": null,
+					"helperAttributes": null,
+					"collectionId": "4ffbae96-1309-4a37-b969-8f0e0f3238a7",
 					"pathVariables": {}
 				}
 			]
@@ -496,7 +620,8 @@
 			"variables": [],
 			"order": [
 				"9e4ac8bd-c398-4992-94b9-380855981e0e",
-				"2905aec0-7cdb-416c-b773-90e39dc4705e"
+				"2905aec0-7cdb-416c-b773-90e39dc4705e",
+				"7f1e99f7-f9c0-4e30-9a29-29d85a9c1a96"
 			],
 			"folders_order": [],
 			"protocolProfileBehavior": {},
@@ -547,10 +672,10 @@
 					"pathVariables": {}
 				},
 				{
-					"id": "9e4ac8bd-c398-4992-94b9-380855981e0e",
-					"uid": "0-9e4ac8bd-c398-4992-94b9-380855981e0e",
-					"name": "loadStudent",
-					"url": "{{hostname}}:8080/student?id=5",
+					"id": "7f1e99f7-f9c0-4e30-9a29-29d85a9c1a96",
+					"uid": "0-7f1e99f7-f9c0-4e30-9a29-29d85a9c1a96",
+					"name": "loadAddress",
+					"url": "{{hostname}}:8080/address?id=9000",
 					"description": null,
 					"data": null,
 					"dataOptions": null,
@@ -561,9 +686,9 @@
 					"queryParams": [
 						{
 							"key": "id",
-							"value": "5",
+							"value": "9000",
 							"equals": true,
-							"description": null,
+							"description": "",
 							"enabled": true
 						}
 					],
@@ -571,6 +696,49 @@
 					"events": null,
 					"folder": null,
 					"responses_order": [],
+					"currentHelper": null,
+					"helperAttributes": null,
+					"collectionId": "e529bd48-41c3-4444-8a05-2820d6ff325e",
+					"pathVariables": {}
+				},
+				{
+					"id": "9e4ac8bd-c398-4992-94b9-380855981e0e",
+					"uid": "0-9e4ac8bd-c398-4992-94b9-380855981e0e",
+					"name": "loadStudent",
+					"url": "{{hostname}}:8080/student?id={{sid}}",
+					"description": null,
+					"data": null,
+					"dataOptions": null,
+					"dataMode": null,
+					"headerData": null,
+					"method": "GET",
+					"pathVariableData": [],
+					"queryParams": [
+						{
+							"key": "id",
+							"value": "{{sid}}",
+							"equals": true,
+							"description": null,
+							"enabled": true
+						}
+					],
+					"auth": null,
+					"events": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "469cf44c-8450-48d9-b852-3131a522c7cc",
+								"exec": [
+									"postman.setGlobalVariable(\"sid\", Number(postman.getGlobalVariable(\"sid\"))+1);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"folder": null,
+					"responses_order": [],
+					"preRequestScript": "postman.setGlobalVariable(\"sid\", Number(postman.getGlobalVariable(\"sid\"))+1);",
+					"tests": null,
 					"currentHelper": null,
 					"helperAttributes": null,
 					"collectionId": "e529bd48-41c3-4444-8a05-2820d6ff325e",
@@ -643,24 +811,30 @@
 	],
 	"environments": [
 		{
-			"id": "ed726c61-42f4-422a-8205-e2828bb038ed",
+			"id": "3749f59e-bf25-4dcf-ae8a-e58892c7b503",
 			"name": "My Workspace - globals",
 			"values": [
 				{
 					"key": "hostname",
-					"value": "ec2-54-146-230-235.compute-1.amazonaws.com",
+					"value": "ec2-54-166-156-213.compute-1.amazonaws.com",
 					"type": "default",
 					"enabled": true
 				},
 				{
 					"key": "sid",
-					"value": "50005",
+					"value": "51013",
 					"enabled": true
 				},
 				{
-					"key": "sid",
-					"value": "",
+					"key": "from",
+					"value": "25001",
 					"type": "any",
+					"enabled": true
+				},
+				{
+					"key": "to",
+					"value": "26000",
+					"type": "default",
 					"enabled": true
 				}
 			]
